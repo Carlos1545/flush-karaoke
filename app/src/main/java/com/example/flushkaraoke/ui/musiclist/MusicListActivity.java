@@ -1,10 +1,12 @@
-package com.example.flushkaraoke;
+package com.example.flushkaraoke.ui.musiclist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.flushkaraoke.R;
+
+public class MusicListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
