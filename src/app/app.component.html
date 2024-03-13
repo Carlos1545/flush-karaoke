@@ -1,0 +1,21 @@
+<mat-drawer-container class="example-container" hasBackdrop>
+    <mat-drawer #drawer mode="over">
+        <div class="main">
+            <button mat-flat-button><mat-icon>sync</mat-icon><span> Sincronizar Karaoke</span></button>
+            <button mat-flat-button><mat-icon>front_hand</mat-icon><span> Pedir Música</span></button>
+            <button mat-flat-button><mat-icon>lyrics</mat-icon><span> Suas Músicas Pedidas</span></button>
+            <button mat-flat-button><mat-icon>star_half</mat-icon><span> Dar NOTA</span></button>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content style="height: 100vh">
+        <mat-toolbar>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <span>Flush Karaokê</span>
+        </mat-toolbar>
+
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

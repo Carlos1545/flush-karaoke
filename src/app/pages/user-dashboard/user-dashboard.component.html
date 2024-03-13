@@ -1,0 +1,23 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="titulo">
+        <th mat-header-cell *matHeaderCellDef> Título </th>
+        <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+        <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+    </ng-container>
+
+    <div class="main">
+        Tabela com Listagem de músicas (Sincronize o Karaokê na Tela de música para visualizar a listagem das próximas músicas)
+    </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<button mat-fab extended color="primary">
+    <mat-icon>front_hand</mat-icon>
+    
+    <span>Pedir música</span>
+</button>
