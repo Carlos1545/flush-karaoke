@@ -1,0 +1,11 @@
+button[mat-fab]{
+    position: fixed;
+    bottom: 10px;
+}
+
+button[mat-fab].right-icon{
+    right: 10px;
+}
+button[mat-fab].left-icon{
+    left: 10px;
+}
