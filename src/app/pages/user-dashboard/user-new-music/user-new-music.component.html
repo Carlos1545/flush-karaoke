@@ -1,1 +1,21 @@
-<p>user-new-music works!</p>
+<form class="form" (ngSubmit)="searchVideos(f)" #f="ngForm">
+    <mat-form-field class="full-width" color="accent">
+      <mat-label>Buscar Vídeo de Karaokê ...</mat-label>
+      <input matInput ngModel name="pesquisa" placeholder="Ex: Cazuza Exagerado">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+</form>
+
+<ul id="resultados-pesquisa">
+    <li *ngFor="let video of videos">
+        <a href="#" (click)="selecionarVideo($event, video)">
+            <div class="thumbnail">
+                <img [src]="video.thumbnailVideo" />
+            </div>
+            <div>
+                <h3 class="titulo">{{ video.titulo }}</h3>
+                <span>{{ video.tituloCanal }}</span>
+            </div>
+        </a>
+    </li>
+</ul>

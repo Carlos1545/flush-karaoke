@@ -9,3 +9,8 @@ button[mat-fab].right-icon{
 button[mat-fab].left-icon{
     left: 10px;
 }
+
+div.text-center{
+    text-align: center;
+    margin: 20px;
+}

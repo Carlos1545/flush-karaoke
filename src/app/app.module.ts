@@ -11,6 +11,7 @@ import { UserRateComponent } from './pages/user-dashboard/user-rate/user-rate.co
 import { UserListMusicComponent } from './pages/user-dashboard/user-list-music/user-list-music.component';
 import { UserNewMusicComponent } from './pages/user-dashboard/user-new-music/user-new-music.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule
   ],

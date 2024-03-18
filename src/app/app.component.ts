@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KaraokeService } from './service/karaoke.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flush-karaoke';
+  temConexao: boolean = false;
+
+  constructor(
+    public karaokeService: KaraokeService,
+  ){}
+
+  syncKaraoke(): void {
+
+  }
 }

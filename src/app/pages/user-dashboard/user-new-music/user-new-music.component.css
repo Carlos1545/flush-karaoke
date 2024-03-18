@@ -1,0 +1,38 @@
+.full-width {
+    width: 100%;
+}
+#resultados-pesquisa{
+    margin: 0;
+    padding: 10px;
+    list-style-type: none;
+    width: calc(100% - 20px);
+    margin-top: -20px;
+}
+#resultados-pesquisa > li{
+    position: relative;
+}
+#resultados-pesquisa > li img{
+    max-width: 150px;
+}
+#resultados-pesquisa > li > a{
+    text-decoration: none;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+}
+#resultados-pesquisa > li .thumbnail{
+    position: relative;
+}
+#resultados-pesquisa > li .titulo{
+    line-height: 21px
+}
+#resultados-pesquisa > li > a > div{
+    padding: 5px;
+}
+#resultados-pesquisa > li .duracao{
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    background-color: #000c;
+    padding: 2px 5px;
+}
