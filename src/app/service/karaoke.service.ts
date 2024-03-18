@@ -7,5 +7,6 @@ import { Pedido } from "../models/Pedido";
     providedIn: 'root'
 })
 export class KaraokeService {
+    karaoke_id: string = "65f7c3793408fcde33e006f8";
     temConexao: boolean = false;
 }

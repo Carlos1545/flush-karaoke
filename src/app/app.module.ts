@@ -12,6 +12,7 @@ import { UserListMusicComponent } from './pages/user-dashboard/user-list-music/u
 import { UserNewMusicComponent } from './pages/user-dashboard/user-new-music/user-new-music.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmationSelectMusicComponent } from './pages/user-dashboard/user-new-music/confirmation-select-music/confirmation-select-music.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     AdminDashboardComponent,
     UserRateComponent,
     UserListMusicComponent,
-    UserNewMusicComponent
+    UserNewMusicComponent,
+    ConfirmationSelectMusicComponent
   ],
   imports: [
     BrowserModule,

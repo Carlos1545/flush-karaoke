@@ -20,7 +20,7 @@
         <span>Pedir música</span>
     </button> -->
 
-    <button mat-fab extended color="warn" class="right-icon" (click)="openBottomSheet()">
+    <button mat-fab extended *ngIf="dataSource.length > 0" color="warn" class="right-icon" (click)="openBottomSheet()">
         <mat-icon>star_half</mat-icon>
         
         <span>Avaliar Cantor Atual!</span>

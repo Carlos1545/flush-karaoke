@@ -7,7 +7,7 @@
 
     <p class="text-center">Ao avaliar o cantor atual, a média da nota de todos do estabelecimento aparecerá na tela ao final da música!</p>
 
-     <h2>Sua nota: {{ voto }}</h2>
+    <h2>Sua nota: {{ voto }}</h2>
 
     <mat-slider min="0" max="10" step="0.5" color="warn" showTickMarks discrete [(ngModel)]="voto" (change)="updateSetting($event)">
         <input matSliderThumb value="10">

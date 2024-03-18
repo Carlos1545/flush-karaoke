@@ -3,6 +3,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { UserRateComponent } from '../user-rate/user-rate.component';
 import { PedidoService } from 'src/app/service/pedido.service';
 import { KaraokeService } from 'src/app/service/karaoke.service';
+import { Pedido } from 'src/app/models/Pedido';
 
 @Component({
   selector: 'app-user-list-music',
@@ -10,15 +11,7 @@ import { KaraokeService } from 'src/app/service/karaoke.service';
   styleUrls: ['./user-list-music.component.css']
 })
 export class UserListMusicComponent implements OnInit{
-  dataSource = [
-    {titulo: 'Cazuza - Exagerado (Versão Karaokê)', cliente: 'Junior'},
-    {titulo: 'Raça Negra - Cheia de Manias - Karaokê', cliente: 'Ana'},
-    {titulo: 'Evanescence - Bring Me To Life (Karaoke Version)', cliente: 'Sebastião'},
-    {titulo: 'Highway to Hell - AC/DC | Karaoke Version | KaraFun', cliente: 'Lorena'},
-    {titulo: 'Karaokê Tá Vendo Aquela Lua - Exaltasamba', cliente: 'Diego'},
-    {titulo: 'Michael Jackson - Billie Jean (Karaoke Version)', cliente: 'Maria'}
-
-  ]
+  dataSource: Pedido[] = []
   displayedColumns: string[] = ['titulo', 'cliente'];
 
   constructor(
@@ -31,17 +24,39 @@ export class UserListMusicComponent implements OnInit{
     // TODO: Verificar se o usuário está conectado com algum karaoke
 
     // TODO: Popular o dataSource
-    // this.pedidoService.listarPedidos().subscribe({
-    //   next: () => {},
-    //   error: () => {}
-    // })
+    this.pedidoService.listarPedidos(this.karaokeService.karaoke_id).subscribe({
+      next: (results: any) => {
+        console.log(results)
+        this.dataSource = results.pedidos;
+      },
+      error: () => {}
+    })
   }
 
   openBottomSheet(): void {
-    this._bottomSheet.open(UserRateComponent);
+    debugger
+    this._bottomSheet.open(UserRateComponent, {
+      data: {
+        pedido: this.dataSource[0]._id,
+        titulo_video: this.dataSource[0].titulo,
+        cliente: this.dataSource[0].cliente
+      }
+    });
   }
 
   syncKaraoke(): void {
+    // TODO: Ligar câmera do celular via service-worker
 
+    // TODO: Validar QR Code com o karaokê
+
+    // TODO: Buscar o id do karaokê baseado no QR Code
+    this.karaokeService.temConexao = true;
+
+    this.pedidoService.listarPedidos(this.karaokeService.karaoke_id).subscribe({
+      next: (results: any) => {
+        this.dataSource = results.pedidos;
+      },
+      error: () => {}
+    })
   }
 }

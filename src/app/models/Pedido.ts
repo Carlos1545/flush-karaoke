@@ -5,6 +5,7 @@ export interface Pedido {
 
     karaoke: Karaoke;
     video_id: string;
+    titulo: string,
     data: Date;
     cliente: string;
     avaliacao: Number;

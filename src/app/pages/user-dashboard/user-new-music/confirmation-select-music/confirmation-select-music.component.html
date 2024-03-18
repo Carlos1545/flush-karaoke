@@ -1,0 +1,15 @@
+
+<mat-card class="p-2">
+    <h2 class="text-center">Deseja selecionar esta música?</h2>
+
+    <p><strong>Musíca:</strong> {{ musica }}</p>
+
+    <form class="form" (ngSubmit)="gerarPedido(f)" #f="ngForm">
+        <mat-form-field class="full-width" color="accent">
+          <mat-label>Insira seu nome: </mat-label>
+          <input matInput ngModel name="nome" placeholder="Ex: José da Silva">
+        </mat-form-field>
+    
+        <button mat-flat-button type="submit" color="warn">Pedir!</button>
+    </form>
+</mat-card>
