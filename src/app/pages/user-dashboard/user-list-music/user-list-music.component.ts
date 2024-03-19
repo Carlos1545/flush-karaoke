@@ -34,7 +34,6 @@ export class UserListMusicComponent implements OnInit{
   }
 
   openBottomSheet(): void {
-    debugger
     this._bottomSheet.open(UserRateComponent, {
       data: {
         pedido: this.dataSource[0]._id,

@@ -28,12 +28,10 @@ export class ConfirmationSelectMusicComponent implements OnInit{
   }
 
   gerarPedido(form: NgForm): void {
-    // TODO: Criar novo pedido
-    this.pedidoService.criarPedido(this.karaokeService.karaoke_id, this.data.video.idVideo, form.value.nome).subscribe({
+    this.pedidoService.criarPedido(this.karaokeService.karaoke_id, this.data.video.idVideo, form.value.nome, this.data.video.titulo).subscribe({
       next: () => {
         this._bottomSheetRef.dismiss();
         this.router.navigate(['/user-dashboard/listagem'])
-        // TODO: Gerar notificaçãozinha no canto da tela para confirmar ação
         this._snackBar.open("Pedido realizado com sucesso", "Ok");
       },
       error: err => console.error(err)

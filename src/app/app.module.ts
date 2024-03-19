@@ -13,6 +13,8 @@ import { UserNewMusicComponent } from './pages/user-dashboard/user-new-music/use
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationSelectMusicComponent } from './pages/user-dashboard/user-new-music/confirmation-select-music/confirmation-select-music.component';
+import { SafeUrlPipe } from './pages/lyrics-screen/safe-url-pipe/safe-url.pipe';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ConfirmationSelectMusicComponent } from './pages/user-dashboard/user-ne
     UserRateComponent,
     UserListMusicComponent,
     UserNewMusicComponent,
-    ConfirmationSelectMusicComponent
+    ConfirmationSelectMusicComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { ConfirmationSelectMusicComponent } from './pages/user-dashboard/user-ne
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    YouTubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

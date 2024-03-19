@@ -1,0 +1,16 @@
+#grid-screen{
+    display: grid;
+    grid-template-columns: 1fr 15%;
+    height: 100vh;
+}
+#grid-screen .p-2{
+    padding: 10px
+}
+#grid-screen youtube-player iframe{
+    width: 100%;
+}
+
+#grid-screen > youtube-player > iframe {
+    display: block;
+    width: 100%;
+  }

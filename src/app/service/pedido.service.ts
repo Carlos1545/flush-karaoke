@@ -17,24 +17,17 @@ export class PedidoService {
         return this.http.get(this.api_url + "/getPedidosByKaraoke/" + karaokeId).pipe(
             catchError(this.handleError),
             map((jsonData: any): Pedido[] => {
-                jsonData.pedidos.map((element: any) => {
-                    // TODO: Remover essa maneira de puxar os vídeos e puxar os títulos direto na criação de novo pedido
-                    this.getTituloByVideoId(element.video_id).subscribe({
-                        next: res => element.titulo = res,
-                        error: err => console.error(err)
-                    });
-                    return element;
-                })
                 return jsonData
             })
         )
     }
 
-    public criarPedido(karaokeId: string, videoId: string, nomeCliente: string): Observable<void>{
+    public criarPedido(karaokeId: string, videoId: string, nomeCliente: string, titulo: string): Observable<void>{
         const data = {
             "karaoke_id": karaokeId,
             "video_id": videoId,
-            "cliente": nomeCliente
+            "cliente": nomeCliente,
+            "titulo": titulo
         }
         return this.http.post(this.api_url, data).pipe(
             catchError(this.handleError)
@@ -50,11 +43,11 @@ export class PedidoService {
         )
     }
 
-    private getTituloByVideoId(videoId: string): Observable<string>{
-        return this.http.get("https://www.googleapis.com/youtube/v3/videos?key=" + this.apiKey + "&part=snippet&id=" + videoId).pipe(
+    public removerPedido(pedidoId: string): Observable<Pedido>{
+        return this.http.delete(this.api_url + "/" + pedidoId).pipe(
             catchError(this.handleError),
-            map((jsonData: any): string => {
-                return jsonData.items[0].snippet.title || "";
+            map((jsonData: any): Pedido => {
+                return jsonData
             })
         )
     }
