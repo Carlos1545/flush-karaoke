@@ -1,12 +1,18 @@
-<div id="grid-screen">
-    <!-- <iframe width="100%" height="100%"  [src]="iframeSrc | safeUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+<div *ngIf="!idInvalido" id="grid-screen">
     <div #youTubePlayer>
-        <youtube-player [videoId]="videoIdAtual" (stateChange)="stateChangeYoutubePlayer($event)" [startSeconds]="1" [width]="videoWidth" [height]="videoHeight" [playerVars]="playerVars"></youtube-player>
+        <youtube-player *ngIf="!mostrarNota" [videoId]="videoIdAtual" (stateChange)="stateChangeYoutubePlayer($event)" [startSeconds]="1" [width]="videoWidth" [height]="videoHeight" [playerVars]="playerVars"></youtube-player>
+        <div id="nota" *ngIf="mostrarNota">
+            <h1>Pontuação!</h1>
+            <h4>Baseada na votação de todos do estabelecimento ...</h4>
+            <h4>Cantor: {{ cantorAtual }}</h4>
+            <h1 class="quadro-voto" #nota></h1>
+            <h4>{{ mensagemAvaliacao }}</h4>
+            <h4>Para votar em quem está cantando, conecte-se pelo QR Code ao lado</h4>
+        </div>
     </div>
     <div>
         <div class="p-2">
-            <span>Conecte-se ao karaokê pelo celular!</span>
-            <img src="https://s.glbimg.com/jo/g1/f/original/2011/05/17/qrcode.jpg" width="100%">
+            <qr-code [value]="qrCodeValue" size="300" errorCorrectionLevel="M"></qr-code>
         </div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="titulo">
@@ -23,4 +29,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
+</div>
+<div *ngIf="idInvalido">
+    ID de karaokê inválido
 </div>

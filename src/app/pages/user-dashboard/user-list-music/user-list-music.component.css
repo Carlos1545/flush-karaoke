@@ -9,6 +9,9 @@ button[mat-fab].right-icon{
 button[mat-fab].left-icon{
     left: 10px;
 }
+button[mat-flat-button]{
+    margin-bottom: 20px;
+}
 
 div.text-center{
     text-align: center;

@@ -30,10 +30,19 @@
     <div class="text-center">
         <h3>Conecte-se com algum karaokê para começar</h3>
 
-        <button mat-flat-button color="warn" (click)="syncKaraoke()">        
+        <button mat-flat-button color="warn" (click)="action.isStart ? action.stop() : action.start()">        
             <mat-icon>sync</mat-icon>
 
-            <span>Conectar Karaokê!</span>
+            <span> {{action.isStart ? 'Parar' : 'Sincronizar Karaokê!'}}</span>
         </button>
+
+        <ngx-scanner-qrcode #action="scanner" (event)="syncKaraoke($event)"></ngx-scanner-qrcode>
+
+        <!-- data  -->
+        <!-- <span>{{ action.data.value | json }}</span>
+        <span>{{ action.data | async | json }}</span> -->
+
+        <!-- Loading -->
+        <p *ngIf="action.isLoading">⌛ Carregando...</p>
     </div>
 </ng-template>

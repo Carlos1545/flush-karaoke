@@ -1,6 +1,6 @@
 #grid-screen{
     display: grid;
-    grid-template-columns: 1fr 15%;
+    grid-template-columns: 1fr 300px;
     height: 100vh;
 }
 #grid-screen .p-2{
@@ -13,4 +13,54 @@
 #grid-screen > youtube-player > iframe {
     display: block;
     width: 100%;
-  }
+}
+#grid-screen #nota{
+    text-align: center;
+    padding: 100px 0px;
+}
+#grid-screen #nota h1{
+    font-size: 40px;
+    line-height: 50px;
+}
+#nota h1.quadro-voto{
+    background-color: #424242;
+    padding: 50px 0px;
+    margin: 35px 0px;
+    font-size: 95px !important;
+    font-family: 'Roboto';
+}
+
+/* ----- */
+@property --percent {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: false;
+}
+@property --temp {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: false;
+}
+@property --v1 {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+@property --v2 {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+  
+h1.quadro-voto {
+    font: 800 40px monospace;
+    padding: 2rem;
+    transition: --percent 5s;
+    --temp: calc(var(--percent));
+    --v1: max(var(--temp) - 0.5, 0);
+    --v2: max((var(--temp) - var(--v1)) * 100 - 0.5, 0);
+    counter-reset: v1 var(--v1) v2 var(--v2);
+}
+h1.quadro-voto::before {
+    content: counter(v1) "." counter(v2, decimal-leading-zero);
+}

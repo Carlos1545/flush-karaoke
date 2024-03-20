@@ -4,6 +4,7 @@
             <button mat-flat-button [routerLink]="['/user-dashboard/listagem']"><mat-icon>list</mat-icon><span> Listagem de Músicas</span></button>
             <!-- <button mat-flat-button [routerLink]="['/user-dashboard/pedidos']"><mat-icon>lyrics</mat-icon><span> Suas Músicas Pedidas</span></button> -->
             <button mat-flat-button [routerLink]="['/user-dashboard/nova-musica']"><mat-icon>front_hand</mat-icon><span> Pedir Música</span></button>
+            <button mat-flat-button (click)="desyncKaraoke()"><mat-icon>sync</mat-icon><span> Dessincronizar Karaokê</span></button>
         </div>
     </mat-drawer>
     <mat-drawer-content style="height: 100vh">

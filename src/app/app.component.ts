@@ -8,13 +8,13 @@ import { KaraokeService } from './service/karaoke.service';
 })
 export class AppComponent {
   title = 'flush-karaoke';
-  temConexao: boolean = false;
 
   constructor(
     public karaokeService: KaraokeService,
   ){}
 
-  syncKaraoke(): void {
-
+  desyncKaraoke(): void {
+    localStorage.removeItem("karaoke_id");
+    this.karaokeService.temConexao = false;
   }
 }

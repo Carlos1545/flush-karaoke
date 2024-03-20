@@ -12,7 +12,7 @@ export class YoutubeService {
     constructor(private http: HttpClient) { }
 
     public listVideosBySearch(searchQuery: string): Observable<Video[]>{
-        return this.http.get('https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&part=snippet&q=' + searchQuery + ' Karaokê').pipe(
+        return this.http.get('https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&part=snippet&type=video&videoEmbeddable=true&q=' + searchQuery + ' Karaokê').pipe(
             catchError(this.handleError),
             map((jsonData: any): Video[] => {
                 jsonData.items.map((element: any, i: number) => {

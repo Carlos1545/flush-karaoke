@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'user-dashboard/listagem', component: UserListMusicComponent },
   { path: 'user-dashboard/nova-musica', component: UserNewMusicComponent },
   { path: 'user-dashboard/nota', component: UserRateComponent },
-  { path: 'lyrics-screen', component: LyricsScreenComponent },
+  { path: 'lyrics-screen/:karaokeId', component: LyricsScreenComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
 ];
 

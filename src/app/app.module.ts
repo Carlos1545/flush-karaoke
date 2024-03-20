@@ -13,8 +13,12 @@ import { UserNewMusicComponent } from './pages/user-dashboard/user-new-music/use
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationSelectMusicComponent } from './pages/user-dashboard/user-new-music/confirmation-select-music/confirmation-select-music.component';
-import { SafeUrlPipe } from './pages/lyrics-screen/safe-url-pipe/safe-url.pipe';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { QrCodeModule } from 'ng-qrcode';
+import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
+
+// Necessary to solve the problem of losing internet connection
+LOAD_WASM().subscribe();
 
 @NgModule({
   declarations: [
@@ -24,8 +28,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     UserRateComponent,
     UserListMusicComponent,
     UserNewMusicComponent,
-    ConfirmationSelectMusicComponent,
-    SafeUrlPipe
+    ConfirmationSelectMusicComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,9 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    QrCodeModule,
+    NgxScannerQrcodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

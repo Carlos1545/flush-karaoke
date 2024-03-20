@@ -8,6 +8,6 @@ export interface Pedido {
     titulo: string,
     data: Date;
     cliente: string;
-    avaliacao: Number;
-    total_avaliacoes: Number;
+    avaliacao: number;
+    total_avaliacoes: number;
 }
