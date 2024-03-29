@@ -1,35 +1,40 @@
-<div *ngIf="!idInvalido" id="grid-screen">
-    <div #youTubePlayer>
-        <youtube-player *ngIf="!mostrarNota" [videoId]="videoIdAtual" (stateChange)="stateChangeYoutubePlayer($event)" [startSeconds]="1" [width]="videoWidth" [height]="videoHeight" [playerVars]="playerVars"></youtube-player>
-        <div id="nota" *ngIf="mostrarNota">
-            <h1>Pontuação!</h1>
-            <h4>Baseada na votação de todos do estabelecimento ...</h4>
-            <h4>Cantor: {{ cantorAtual }}</h4>
-            <h1 class="quadro-voto" #nota></h1>
-            <h4>{{ mensagemAvaliacao }}</h4>
-            <h4>Para votar em quem está cantando, conecte-se pelo QR Code ao lado</h4>
-        </div>
+<div *ngIf="!idInvalido">
+    <div *ngIf="!acessoLiberado" id="liberacao">
+        <h1 class="title">Para começar a utilizar o Flush Karaokê, libere o acesso a partir do aplicativo de administração inserindo o seguinte código:</h1>
+        <h2 class="code">GS42UF</h2>
+        <h4 class="subtitle">Após conectar, mantenha esta tela aberta para continuar utilizando o karaokê.</h4>
     </div>
-    <div>
-        <div class="p-2">
-            <qr-code [value]="qrCodeValue" size="300" errorCorrectionLevel="M"></qr-code>
+    <div *ngIf="acessoLiberado" id="grid-screen">
+        <div #youTubePlayer>
+            <youtube-player *ngIf="!mostrarNota" [videoId]="videoIdAtual" (stateChange)="stateChangeYoutubePlayer($event)" [startSeconds]="1" [width]="videoWidth" [height]="videoHeight" [playerVars]="playerVars"></youtube-player>
+            <div id="nota" *ngIf="mostrarNota">
+                <h1>Pontuação!</h1>
+                <h4>Baseada na votação de todos do estabelecimento ...</h4>
+                <h4>Cantor: {{ cantorAtual }}</h4>
+                <h1 class="quadro-voto" #nota></h1>
+                <h4>{{ mensagemAvaliacao }}</h4>
+                <h4>Para votar em quem está cantando, conecte-se pelo QR Code ao lado</h4>
+            </div>
         </div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <ng-container matColumnDef="titulo">
-                <th mat-header-cell *matHeaderCellDef> Próximas Músicas </th>
-                <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
-            </ng-container>
-    
-            <ng-container matColumnDef="cliente">
-                <th mat-header-cell *matHeaderCellDef> Cliente </th>
-                <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
-            </ng-container>
-    
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        <div>
+            <qr-code [value]="qrCodeValue" size="300" errorCorrectionLevel="M"></qr-code>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="titulo">
+                    <th mat-header-cell *matHeaderCellDef> Próximas Músicas </th>
+                    <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="cliente">
+                    <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
     </div>
 </div>
-<div *ngIf="idInvalido">
-    ID de karaokê inválido
+<div *ngIf="idInvalido" class="alert">
+    <mat-icon>warning</mat-icon> ID de karaokê inválido, entre com um ID de karaokê válido para continuar.
 </div>

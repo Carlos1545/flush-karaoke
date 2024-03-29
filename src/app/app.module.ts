@@ -16,6 +16,8 @@ import { ConfirmationSelectMusicComponent } from './pages/user-dashboard/user-ne
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { QrCodeModule } from 'ng-qrcode';
 import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
+import { LoginComponent } from './pages/admin-dashboard/login/login.component';
+import { CreateAccountComponent } from './pages/admin-dashboard/create-account/create-account.component';
 
 // Necessary to solve the problem of losing internet connection
 LOAD_WASM().subscribe();
@@ -28,7 +30,9 @@ LOAD_WASM().subscribe();
     UserRateComponent,
     UserListMusicComponent,
     UserNewMusicComponent,
-    ConfirmationSelectMusicComponent
+    ConfirmationSelectMusicComponent,
+    LoginComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,

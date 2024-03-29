@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'user-dashboard/nova-musica', component: UserNewMusicComponent },
   { path: 'user-dashboard/nota', component: UserRateComponent },
   { path: 'lyrics-screen/:karaokeId', component: LyricsScreenComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'admin', component: AdminDashboardComponent },
 ];
 
 @NgModule({

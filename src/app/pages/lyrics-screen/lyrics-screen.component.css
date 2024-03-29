@@ -30,6 +30,42 @@
     font-family: 'Roboto';
 }
 
+.alert{
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 17px;
+}
+
+/* ----- Tela de Liberação */
+#liberacao{
+    padding: 200px;
+}
+
+#liberacao .title{
+    font-size: 31px;
+    line-height: 41px;
+}
+
+#liberacao .code{
+    font-size: 61px;
+    line-height: 71px;
+    color: mediumvioletred
+}
+
+#liberacao .subtitle{
+    color: darkgray;
+}
+
 /* ----- */
 @property --percent {
     syntax: "<number>";
