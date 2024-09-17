@@ -26,7 +26,7 @@ import { PedidoService } from 'src/app/service/pedido.service';
   intervalLoopPrincipal: any;
 
   idInvalido: boolean = false;
-  acessoLiberado: boolean = false;
+  acessoLiberado: boolean = true;
   mostrarNota: boolean = false;
   cantorAtual: string = "";
   mensagemAvaliacao: string = "...";
@@ -73,7 +73,7 @@ import { PedidoService } from 'src/app/service/pedido.service';
 
   private onResize(): void {
     this.videoWidth = this.youTubePlayer.nativeElement.clientWidth;
-    this.videoHeight = this.youTubePlayer.nativeElement.clientHeight - 65;
+    this.videoHeight = this.youTubePlayer.nativeElement.clientHeight - 10;
     this.changeDetectorRef.detectChanges();
   }
 

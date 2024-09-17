@@ -1,1 +1,50 @@
-<p>admin-dashboard works!</p>
+<mat-drawer-container class="example-container" hasBackdrop>
+    <mat-drawer-content style="height: 100vh">
+        <mat-toolbar>
+            <span>Flush Karaokê</span>
+
+            <button mat-icon-button [routerLink]="['/admin-dashboard/configuracao']">
+                <mat-icon>settings</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <div class="main">
+            <div class=""> Bem-vindo, {{ nomeDoKaroake }} </div>
+            <button mat-flat-button color="primary" (click)="pularMusica()"><mat-icon>skip_next</mat-icon> Pular Música</button>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="titulo">
+                <th mat-header-cell *matHeaderCellDef> Título </th>
+                <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cliente">
+                <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Ação </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button type="button" [matMenuTriggerFor]="actionMenu"><mat-icon>more_vert</mat-icon></button>
+                    <mat-menu #actionMenu="matMenu">
+                        <button mat-menu-item (click)="trocarMusica(element)"><mat-icon>change_circle</mat-icon> Trocar Música</button>
+                        <button mat-menu-item (click)="removerMusica(element)"><mat-icon>cancel</mat-icon> Remover</button>
+                        <button mat-menu-item (click)="adicionarMusica(element)"><mat-icon>add_circle</mat-icon> Adicionar Música</button>
+                    </mat-menu>
+                </td>
+                
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <button mat-fab extended *ngIf="dataSource.length > 0" color="primary" class="right-icon" [routerLink]="['/admin-dashboard/musicas-pedidas']">
+            <mat-icon>attach_money</mat-icon>
+            
+            <span>Fechar Conta</span>
+        </button>
+    </mat-drawer-content>
+</mat-drawer-container>

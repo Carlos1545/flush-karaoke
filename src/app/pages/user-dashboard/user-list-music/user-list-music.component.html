@@ -1,48 +1,67 @@
-<div *ngIf="karaokeService.temConexao; else realizarConexao">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="titulo">
-            <th mat-header-cell *matHeaderCellDef> Título </th>
-            <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
-        </ng-container>
+<mat-drawer-container class="example-container" hasBackdrop>
+    <mat-drawer #drawer mode="over">
+        <div class="main">
+            <button mat-flat-button [routerLink]="['/user-dashboard/listagem']"><mat-icon>list</mat-icon><span> Listagem de Músicas</span></button>
+            <!-- <button mat-flat-button [routerLink]="['/user-dashboard/pedidos']"><mat-icon>lyrics</mat-icon><span> Suas Músicas Pedidas</span></button> -->
+            <button mat-flat-button [routerLink]="['/user-dashboard/nova-musica']"><mat-icon>front_hand</mat-icon><span> Pedir Música</span></button>
+            <button mat-flat-button (click)="desyncKaraoke()"><mat-icon>sync</mat-icon><span> Dessincronizar Karaokê</span></button>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content style="height: 100vh">
+        <mat-toolbar>
+            <button mat-icon-button *ngIf="karaokeService.temConexao" (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
 
-        <ng-container matColumnDef="cliente">
-            <th mat-header-cell *matHeaderCellDef> Cliente </th>
-            <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
-        </ng-container>
+            <span>Flush Karaokê</span>
+        </mat-toolbar>
+        <div *ngIf="karaokeService.temConexao; else realizarConexao">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="titulo">
+                    <th mat-header-cell *matHeaderCellDef> Título </th>
+                    <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+                </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+                <ng-container matColumnDef="cliente">
+                    <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+                </ng-container>
 
-    <!-- <button mat-fab extended color="primary" class="right-icon" [routerLink]="['/user-dashboard/nova-musica']">
-        <mat-icon>front_hand</mat-icon>
-        
-        <span>Pedir música</span>
-    </button> -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
 
-    <button mat-fab extended *ngIf="dataSource.length > 0" color="warn" class="right-icon" (click)="openBottomSheet()">
-        <mat-icon>star_half</mat-icon>
-        
-        <span>Avaliar Cantor Atual!</span>
-    </button>
-</div>
-<ng-template #realizarConexao>
-    <div class="text-center">
-        <h3>Conecte-se com algum karaokê para começar</h3>
+            <!-- <button mat-fab extended color="primary" class="right-icon" [routerLink]="['/user-dashboard/nova-musica']">
+                <mat-icon>front_hand</mat-icon>
+                
+                <span>Pedir música</span>
+            </button> -->
 
-        <button mat-flat-button color="warn" (click)="action.isStart ? action.stop() : action.start()">        
-            <mat-icon>sync</mat-icon>
+            <button mat-fab extended *ngIf="dataSource.length > 0" color="warn" class="right-icon" (click)="openBottomSheet()">
+                <mat-icon>star_half</mat-icon>
+                
+                <span>Avaliar Cantor Atual!</span>
+            </button>
+        </div>
+        <ng-template #realizarConexao>
+            <div class="text-center">
+                <h3>Conecte-se com algum karaokê para começar</h3>
 
-            <span> {{action.isStart ? 'Parar' : 'Sincronizar Karaokê!'}}</span>
-        </button>
+                <button mat-flat-button color="warn" (click)="action.isStart ? action.stop() : action.start()">        
+                    <mat-icon>sync</mat-icon>
 
-        <ngx-scanner-qrcode #action="scanner" (event)="syncKaraoke($event)"></ngx-scanner-qrcode>
+                    <span> {{action.isStart ? 'Parar' : 'Sincronizar Karaokê!'}}</span>
+                </button>
 
-        <!-- data  -->
-        <!-- <span>{{ action.data.value | json }}</span>
-        <span>{{ action.data | async | json }}</span> -->
+                <ngx-scanner-qrcode #action="scanner" (event)="syncKaraoke($event)"></ngx-scanner-qrcode>
 
-        <!-- Loading -->
-        <p *ngIf="action.isLoading">⌛ Carregando...</p>
-    </div>
-</ng-template>
+                <!-- data  -->
+                <!-- <span>{{ action.data.value | json }}</span>
+                <span>{{ action.data | async | json }}</span> -->
+
+                <!-- Loading -->
+                <p *ngIf="action.isLoading">⌛ Carregando...</p>
+            </div>
+        </ng-template>
+    </mat-drawer-content>
+</mat-drawer-container>

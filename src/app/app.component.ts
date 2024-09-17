@@ -7,14 +7,5 @@ import { KaraokeService } from './service/karaoke.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'flush-karaoke';
-
-  constructor(
-    public karaokeService: KaraokeService,
-  ){}
-
-  desyncKaraoke(): void {
-    localStorage.removeItem("karaoke_id");
-    this.karaokeService.temConexao = false;
-  }
+  
 }

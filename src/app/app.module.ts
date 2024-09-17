@@ -18,6 +18,8 @@ import { QrCodeModule } from 'ng-qrcode';
 import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
 import { LoginComponent } from './pages/admin-dashboard/login/login.component';
 import { CreateAccountComponent } from './pages/admin-dashboard/create-account/create-account.component';
+import { AdminConfigurationComponent } from './pages/admin-dashboard/admin-configuration/admin-configuration.component';
+import { ListRequestedSongsComponent } from './pages/admin-dashboard/list-requested-songs/list-requested-songs.component';
 
 // Necessary to solve the problem of losing internet connection
 LOAD_WASM().subscribe();
@@ -32,7 +34,9 @@ LOAD_WASM().subscribe();
     UserNewMusicComponent,
     ConfirmationSelectMusicComponent,
     LoginComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    AdminConfigurationComponent,
+    ListRequestedSongsComponent
   ],
   imports: [
     BrowserModule,

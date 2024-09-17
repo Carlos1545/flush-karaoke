@@ -1,0 +1,28 @@
+.main{
+    display: grid;
+    grid-template-columns: 1fr 152px;
+    padding: 10px;
+    align-items: center;
+}
+
+mat-toolbar{
+    justify-content: space-between;
+}
+
+.mat-column-action{
+    width: 32px;
+    padding: 3px;
+    text-align: center;
+}
+
+button[mat-fab]{
+    position: fixed;
+    bottom: 10px;
+}
+
+button[mat-fab].right-icon{
+    right: 10px;
+}
+button[mat-fab].left-icon{
+    left: 10px;
+}

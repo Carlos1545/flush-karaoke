@@ -36,6 +36,11 @@ export class UserListMusicComponent implements OnInit{
     }
   }
 
+  desyncKaraoke(): void {
+    localStorage.removeItem("karaoke_id");
+    this.karaokeService.temConexao = false;
+  }
+
   openBottomSheet(): void {
     this._bottomSheet.open(UserRateComponent, {
       data: {
