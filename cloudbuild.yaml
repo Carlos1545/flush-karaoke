@@ -1,9 +1,9 @@
 steps:
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/flush-karaoke-417218/flush-karaoke", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/flush-karaoke", ".", "dockerfile"]
     # push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/flush-karaoke-417218/flush-karaoke"]
+    args: ["push", "gcr.io/$PROJECT_ID/flush-karaoke"]
     # Deploy container image to Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
     args:
@@ -12,15 +12,24 @@ steps:
     "run",
     "deploy",
     "--allow-unauthenticated",
-    "flush-karaoke-417218",
+    "$PROJECT_ID",
     "--image",
-    "gcr.io/flush-karaoke-417218/flush-karaoke",
+    "gcr.io/$PROJECT_ID/flush-karaoke",
     "--region",
-    "us-central1",
+    "$_DEPLOY_REGION",
     "--platform",
     "managed",
     "--memory",
     "128Mi"
     ]
 images:
-  - "gcr.io/flush-karaoke-417218/flush-karaoke"
+  - "gcr.io/$PROJECT_ID/flush-karaoke"
+options:
+  substitutionOption: ALLOW_LOOSE
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _DEPLOY_REGION: southamerica-east1
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - flush-karaoke
